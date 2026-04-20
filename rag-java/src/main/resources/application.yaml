@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: rag-java
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ragdb
+    username: raguser
+    password: ragpass
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+
+langchain4j:
+  open-ai:
+    chat-model:
+      api-key: ${OPENAI_API_KEY}
+      model-name: gpt-4o-mini
+    embedding-model:
+      api-key: ${OPENAI_API_KEY}
+      model-name: text-embedding-3-small
