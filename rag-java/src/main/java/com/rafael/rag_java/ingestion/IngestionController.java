@@ -11,8 +11,15 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/documents")
 public class IngestionController {
 
+private final IngestionService ingestionService;
+
+public IngestionController(IngestionService ingestionService) {
+    this.ingestionService = ingestionService;
+}
+
 @PostMapping("/upload")
 public ResponseEntity<String> upload(@RequestParam("file") MultipartFile file) {
+    ingestionService.ingest(file);
     return ResponseEntity.ok("Arquivo recebido:" + file.getOriginalFilename());
 }
 
