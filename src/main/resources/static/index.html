@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAG Java</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>RAG Java</h1>
+
+<div class="card">
+    <h2>Enviar documento</h2>
+    <input type="file" id="file-input" accept=".pdf,.txt">
+    <button onclick="uploadFile()">Enviar</button>
+    <p id="upload-status"></p>
+</div>
+
+<div class="card">
+    <h2>Chat</h2>
+    <div id="chat-messages"></div>
+    <div class="input-row">
+        <input type="text" id="question-input" placeholder="Faça uma pergunta sobre o documento..." onkeydown="if(event.key==='Enter') sendMessage()">
+        <button onclick="sendMessage()">Enviar</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
