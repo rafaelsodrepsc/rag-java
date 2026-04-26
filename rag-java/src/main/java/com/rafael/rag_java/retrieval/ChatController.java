@@ -13,8 +13,9 @@ public class ChatController {
     }
 
     @PostMapping
-    public ResponseEntity<String> chat(@RequestBody String question) {
-        String answer = chatService.retrieval(question);
+    public ResponseEntity<String> chat(@RequestBody ChatRequest request) {
+        String answer = chatService.retrieval(request.question());
         return ResponseEntity.ok(answer);
     }
 }
+

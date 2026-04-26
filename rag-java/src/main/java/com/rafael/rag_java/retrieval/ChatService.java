@@ -25,6 +25,10 @@ public class ChatService {
     }
 
     public String retrieval(String question) {
+        if (question == null || question.isBlank()) {
+            throw new IllegalArgumentException("Pergunta não pode estar vazia");
+        }
+
         Embedding questionEmbedding = embeddingModel.embed(question).content();
 
         EmbeddingSearchRequest searchRequest = EmbeddingSearchRequest.builder()

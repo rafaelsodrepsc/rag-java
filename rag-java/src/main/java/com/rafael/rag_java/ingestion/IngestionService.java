@@ -27,6 +27,19 @@ public class IngestionService {
 
     public void ingest(MultipartFile file) {
         try {
+            if (file.isEmpty()) {
+                throw new IllegalArgumentException("Arquivo não pode estar vazio");
+            }
+
+            if (file.getSize() > 10 * 1024 * 1024) {
+                throw new IllegalArgumentException("Arquivo não pode ser maior que 10MB");
+            }
+
+            String filename = file.getOriginalFilename();
+            if (filename == null || (!filename.endsWith(".pdf") && !filename.endsWith(".txt"))) {
+                throw new IllegalArgumentException("Apenas arquivos PDF e TXT são aceitos");
+            }
+
             Path tempFile = Files.createTempFile("rag-", file.getOriginalFilename());
             file.transferTo(tempFile);
 
