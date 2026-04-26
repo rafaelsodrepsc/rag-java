@@ -35,10 +35,16 @@ docker run --name pgvector -e POSTGRES_DB=ragdb -e POSTGRES_USER=raguser -e POST
 ```
 
 **2. Configure a variável de ambiente no IntelliJ:**
-
-- OPENAI_API_KEY=sua-chave-aqui
+```
+OPENAI_API_KEY=sua-chave-aqui
+```
 
 **3. Rode o projeto pelo IntelliJ**
+
+**4. Acesse a interface web:**
+```
+http://localhost:8080
+```
 
 ## Endpoints
 
@@ -55,9 +61,13 @@ curl -X POST http://localhost:8080/chat \
 ```
 
 ## Estrutura do projeto
+
 ```
-src/main/java/com/rafael/rag_java/
-├── config/          # Configurações do LangChain4j e tratamento de erros
-├── ingestion/       # Upload e processamento de documentos
-└── retrieval/       # Chat e busca por similaridade
+src/main/
+├── java/com/rafael/rag_java/
+│   ├── config/        # Configurações do LangChain4j e tratamento de erros
+│   ├── ingestion/     # Upload e processamento de documentos
+│   └── retrieval/     # Chat e busca por similaridade
+└── resources/
+    └── static/        # Interface web (HTML, CSS, JS)
 ```
